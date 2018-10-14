@@ -8,10 +8,10 @@ class PitchForm(FlaskForm):
     my_category = SelectField('category',desired=[('interview','interview'),('product','product'),('job','job'),('pick-up-line','pick-up-line')], validators=[Required()])
     submit = SubmitField('Submit')
 
-# class CommentForm(FlaskForm):
-#     comment = TextAreaField('comment on your desired pitch', validators=[Required()])
-#     submit = SubmitField('Comment')
-#
-# class UpdateProfile(FlaskForm):
-#     bio = TextAreaField('Tell us about you.',validators=[Required()])
-#     submit = SubmitField('Submit')
+class CommentForm(FlaskForm):
+    comment = TextAreaField('comment on your desired pitch', validators=[Required()])
+    submit = SubmitField('Comment')
+
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField('Tell us about you.',validators=[Required()])
+    submit = SubmitField('Submit')
