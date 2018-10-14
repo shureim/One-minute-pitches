@@ -14,24 +14,24 @@ def index():
 
     title = "Home - Welcome to my Pitch"
     return render_template('index.html',title=title)
-# 
-# @main.route('/user/<uname>&<id_user>')
-# @login_required
-# def profile(uname, id_user):
-#
-#     user = User.query.filter_by(username = uname).first()
-#     title = f'{uname | capitalize()} profile'
-#
-#     get_pitches = Pitch.query.filter_by(user_id = id_user).all()
-#     get_comments = Comment.query.filter_by(user_id = id_user).all()
-#     get_upvotes = UpVote.query.filter_by(id_user=id_user).all()
-#     get_downvotes = DownVote.query.filter_by(id_user=id_user).all()
-#
-#
-#     if user is None:
-#         abort(404)
-#
-#     return render_template("profile/profile.html", user = user, title = title, pitches_new = get_pitches, comments_new = get_comments)
+
+@main.route('/user/<uname>&<id_user>')
+@login_required
+def profile(uname, id_user):
+
+    user = User.query.filter_by(username = uname).first()
+    title = f'{uname | capitalize()} profile'
+
+    get_pitches = Pitch.query.filter_by(user_id = id_user).all()
+    get_comments = Comment.query.filter_by(user_id = id_user).all()
+    get_upvotes = UpVote.query.filter_by(id_user=id_user).all()
+    get_downvotes = DownVote.query.filter_by(id_user=id_user).all()
+
+
+    if user is None:
+        abort(404)
+
+    return render_template("profile/profile.html", user = user, title = title, pitches_new = get_pitches, comments_new = get_comments)
 #
 # @main.route('/home', methods = ['GET', 'POST'])
 # @login_required
