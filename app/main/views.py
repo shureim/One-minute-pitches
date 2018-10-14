@@ -50,36 +50,36 @@ def home():
 
     title = 'Home | One-Minute'
     return render_template('home.html', title = title, pitch_form = pitch_form, pitches = all_pitches)
-#
-# @main.route('/category/<rep>')
-# def category(rep):
-#     my_category = Pitch.get_category(rep)
-#
-#     title = f"{rep} category | Tarek's Pitch"
-#
-#     return render_template('category.html', title=title, category=my_category)
-#
-#
-#
-#
-# @main.route('/user/<uname>/update',methods = ['GET','POST'])
-# @login_required
-# def update_profile(uname):
-#     user = User.query.filter_by(username = uname).first()
-#     if user is None:
-#         abort(404)
-#
-#     form = UpdateProfile()
-#
-#     if form.validate_on_submit():
-#         user.bio = form.bio.data
-#
-#         db.session.add(user)
-#         db.session.commit()
-#
-#         return redirect(url_for('.profile',uname=user.username,id_user=user_id))
-#     title = 'this is the bio'
-#     return render_template('profile/update.html',form=form, title=title)
+
+@main.route('/category/<rep>')
+def category(rep):
+    my_category = Pitch.get_category(rep)
+
+    title = f"{rep} category | Tarek's Pitch"
+
+    return render_template('category.html', title=title, category=my_category)
+
+
+
+
+@main.route('/user/<uname>/update',methods = ['GET','POST'])
+@login_required
+def update_profile(uname):
+    user = User.query.filter_by(username = uname).first()
+    if user is None:
+        abort(404)
+
+    form = UpdateProfile()
+
+    if form.validate_on_submit():
+        user.bio = form.bio.data
+
+        db.session.add(user)
+        db.session.commit()
+
+        return redirect(url_for('.profile',uname=user.username,id_user=user_id))
+    title = 'this is the bio'
+    return render_template('profile/update.html',form=form, title=title)
 #
 # @main.route('/user/<uname>/update/pic',methods= ['POST'])
 # @login_required
