@@ -1,4 +1,4 @@
-# from flask import Flask
+from flask import Flask
 # from flask_bootstrap import Bootstrap
 # from config import config_options
 # from flask_sqlalchemy import SQLAlchemy
@@ -36,5 +36,5 @@
 #
 #     #configure UploadSet
 #     configure_uploads(app,photos)
-#
-#     return app
+
+    return app
