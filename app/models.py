@@ -85,25 +85,25 @@ class Comment(db.Model):
 
     def __repr__(self) :
         return f'User {self.name}'
-#
-# class UpVote(db.Model):
-#     __tablename__ = 'upvotes'
-#
-#     id = db.Column(db.Integer, primary_key=True)
-#     id_user = db.Column(db.Integer, db.ForeignKey('users.id'))
-#     pitching_id = db.Column(db.Integer)
-#
-#     def save_vote(self):
-#         db.session.add(self)
-#         db.session.commit()
-#
-#     @classmethod
-#     def get_votes(cls, id):
-#         upvote = UpVote.query.filter_by(pitching_id=id).all()
-#         return upvote
-#
-#     def __repr__(self):
-#         return f'{self.id_user}:{self.pitching_id}'
+
+class UpVote(db.Model):
+    __tablename__ = 'upvotes'
+
+    id = db.Column(db.Integer, primary_key=True)
+    id_user = db.Column(db.Integer, db.ForeignKey('users.id'))
+    pitching_id = db.Column(db.Integer)
+
+    def save_vote(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_votes(cls, id):
+        upvote = UpVote.query.filter_by(pitching_id=id).all()
+        return upvote
+
+    def __repr__(self):
+        return f'{self.id_user}:{self.pitching_id}'
 #
 #
 # class DownVote(db.Model):
