@@ -32,24 +32,24 @@ def profile(uname, id_user):
         abort(404)
 
     return render_template("profile/profile.html", user = user, title = title, pitches_new = get_pitches, comments_new = get_comments)
-#
-# @main.route('/home', methods = ['GET', 'POST'])
-# @login_required
-# def home():
-#     pitch_form = PitchForm()
-#
-#     if pitch_form.validate_on_submit():
-#         pitch = pitch_form.pitch.data
-#         rep = pitch_form.my_category.data
-#
-#         new_pitch = Pitch(pitch_content = pitch, pitch_category = rep, user = current_user)
-#         new_pitch.save_pitch()
-#
-#         return redirect(url_for('main.home'))
-#     all_pitches = pitch.get_all_pitches()
-#
-#     title = 'Home | One-Minute'
-#     return render_template('home.html', title = title, pitch_form = pitch_form, pitches = all_pitches)
+
+@main.route('/home', methods = ['GET', 'POST'])
+@login_required
+def home():
+    pitch_form = PitchForm()
+
+    if pitch_form.validate_on_submit():
+        pitch = pitch_form.pitch.data
+        rep = pitch_form.my_category.data
+
+        new_pitch = Pitch(pitch_content = pitch, pitch_category = rep, user = current_user)
+        new_pitch.save_pitch()
+
+        return redirect(url_for('main.home'))
+    all_pitches = pitch.get_all_pitches()
+
+    title = 'Home | One-Minute'
+    return render_template('home.html', title = title, pitch_form = pitch_form, pitches = all_pitches)
 #
 # @main.route('/category/<rep>')
 # def category(rep):
