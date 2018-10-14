@@ -33,39 +33,39 @@ class User(UserMixin,db.Model):
 
     def __repr__(self):
         return f'User{self.username}'
-#
-#
-# class Pitch(db.Model):
-#
-#     __tablename__ = 'pitches'
-#
-#     id = db.Column(db.Integer,primary_key=True)
-#     pitch_content = db.Column(db.String)
-#     pitch_category= db.Column(db.String(255))
-#     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-#
-#
-#     def save_pitch(self):
-#         db.session.add(self)
-#         db.session.commit()
-#
-#     @classmethod
-#     def clear_pitches(cls):
-#         Pitch.all_pitches.clear()
-#
-#     @classmethod
-#     def get_pitches(cls,id):
-#         pitches = Pitch.query.filter_by('-id').all()
-#         return pitches
-#
-#     @classmethod
-#     def get_category(cls, ref):
-#
-#         category = Pitch.query.filter_by(pitch_category=ref).order_by('-id').all()
-#         return category
-#
-#
-#
+
+
+class Pitch(db.Model):
+
+    __tablename__ = 'pitches'
+
+    id = db.Column(db.Integer,primary_key=True)
+    pitch_content = db.Column(db.String)
+    pitch_category= db.Column(db.String(255))
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
+
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def clear_pitches(cls):
+        Pitch.all_pitches.clear()
+
+    @classmethod
+    def get_pitches(cls,id):
+        pitches = Pitch.query.filter_by('-id').all()
+        return pitches
+
+    @classmethod
+    def get_category(cls, ref):
+
+        category = Pitch.query.filter_by(pitch_category=ref).order_by('-id').all()
+        return category
+
+
+
 # class Comment(db.Model):
 #     __tablename__ = 'comments'
 #
