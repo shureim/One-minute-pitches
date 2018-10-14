@@ -1,20 +1,20 @@
-# from flask_login import login_required,current_user
-# from flask import render_template,request,redirect,url_for,abort
-# from ..models import User, Pitch, Comment,UpVote,DownVote
-# from .forms import UpdateProfile, PitchForm
-# from .. import db,photos
-# from . import main
-#
-# #Views
-# @main.route("/")
-# def index():
-#     """
-#     View root page function that return the index page and its data
-#     """
-#
-#     title = "Home - Welcome to my Pitch"
-#     return render_template('index.html',title=title)
-#
+from flask_login import login_required,current_user
+from flask import render_template,request,redirect,url_for,abort
+from ..models import User, Pitch, Comment,UpVote,DownVote
+from .forms import UpdateProfile, PitchForm
+from .. import db,photos
+from . import main
+
+#Views
+@main.route("/")
+def index():
+    """
+    View root page function that return the index page and its data
+    """
+
+    title = "Home - Welcome to my Pitch"
+    return render_template('index.html',title=title)
+# 
 # @main.route('/user/<uname>&<id_user>')
 # @login_required
 # def profile(uname, id_user):
