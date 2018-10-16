@@ -5,7 +5,7 @@ from app.models import User, Pitch, Comment
 
 
 # instances for the create_app
-app = create_app('production')
+app = create_app('development')
 
 manager = Manager(app)
 migrate = Migrate(app, db)

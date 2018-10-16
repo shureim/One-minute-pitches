@@ -23,15 +23,34 @@
             <hr>
             {% if user.bio %}
                 <p> {{user.bio}} </p>
-            {% else %}  <a class="dropdown-item" href="/category/Promotion-Pitch">Promotion Pitch</a>
-            <a class="dropdown-item" href="/category/pick-up-lines">Pick Up lines</a>
+            {% else %}  <a class="dropdown-item" href="/category/Promotion-Pitch"><h4>Promotion Pitch</h4></a>
+            <a class="dropdown-item" href="/category/pick-up-lines"><h4>Pick Up lines</h4></a>
                 <p>{{user.username|capitalize}} has no bio</p>
             {% endif %}
             {% if user == current_user %}
-            <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit Bio</a>
+            <a href="{{url_for('main.update_profile',uname=user.username)}}"><h3>Edit Bio</h3></a>
             <br>
             {% endif %}
             <br>
+            <h3>Status</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope='col'></th>
+                        <th scope='col'><h4> </h4></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><h4>Pitches Upvote</h4></td>
+                        <td>{{likes_no|length}}</td>
+                    </tr>
+                    <tr>
+                        <td><h4>Pitches Downvote</h4></td>
+                        <td>{{dislikes_no|length}}</td>
+                    </tr>
+                </tbody>
+            </table>
            
             
         </div>
