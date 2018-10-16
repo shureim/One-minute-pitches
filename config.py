@@ -34,7 +34,7 @@ class ProdConfig(Config):
     child class of config
     activate when you go to production mode
     """
-    DATABASE_PASS = os.environ.get('DATABASE_PASS')
+    
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 
